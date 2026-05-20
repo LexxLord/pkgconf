@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Add keyring [chaotic-aur, andontie-aur, arcanisrepo]
+
+sudo pacman-key --recv-key 3056513887B78AEB 72BF227DD76AE5BF E989490C --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB 72BF227DD76AE5BF E989490C
+
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-'{keyring,mirrorlist}'.pkg.tar.zst'
+
+
+# Add cachyos repo
+curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz
+tar xvf cachyos-repo.tar.xz && cd cachyos-repo
+sudo ./cachyos-repo.sh
+
+
+# Copy ready config
+cp -arf ./pacman.conf /etc/pacman.conf
