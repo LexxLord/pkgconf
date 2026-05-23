@@ -19,3 +19,7 @@ sudo cp -arf ./pacman.conf /etc/pacman.conf
 
 # Update system
 sudo pacman -Sy
+
+echo
+read -r -sn1 -p "Press any key to continue..."
+echo
